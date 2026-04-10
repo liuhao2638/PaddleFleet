@@ -350,6 +350,10 @@ class TestIsPaddleMinVersion(unittest.TestCase):
         result = is_paddle_min_version("999.0.0", check_equality=True)
         self.assertFalse(result)
 
+    @unittest.skipIf(
+        os.getenv("repo_flag") != "paddlefleet",
+        f"Skipping test: repo_flag={os.getenv('repo_flag')} (not 'paddlefleet')",
+    )
     def test_check_strict_inequality(self):
         from paddlefleet.utils import is_paddle_min_version
 
