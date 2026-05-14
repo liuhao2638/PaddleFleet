@@ -245,7 +245,6 @@ class TestDotProductAttentionGQA(unittest.TestCase):
 class TestDotProductAttentionFP16(unittest.TestCase):
     """Tests for DotProductAttention forward with fp16 input."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_fp16(self):
         self.addCleanup(paddle.device.set_device, "gpu:0")
         config = _make_config()
@@ -268,7 +267,6 @@ class TestDotProductAttentionFP16(unittest.TestCase):
 class TestDotProductAttentionBF16(unittest.TestCase):
     """Tests for DotProductAttention forward with bf16 input."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_bf16(self):
         self.addCleanup(paddle.device.set_device, "gpu:0")
         config = _make_config()
@@ -311,7 +309,6 @@ class TestDotProductAttentionEager(unittest.TestCase):
         out = attn(q, k, v, None)
         self.assertEqual(out.shape, [2, 4, 128])
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_eager_fp16_skips_sdpa(self):
         """fp16 + eager should bypass scaled_dot_product_attention."""
         config = self._make_eager_config()

@@ -134,7 +134,6 @@ class TestCudaRNGStatesTracker(unittest.TestCase):
 class TestCudaRNGStatesTrackerAddAndFork(unittest.TestCase):
     """Tests for CudaRNGStatesTracker add and fork with CUDA."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_add_and_fork(self):
         """Test adding and forking an RNG state."""
         tracker = CudaRNGStatesTracker()
@@ -183,7 +182,6 @@ class TestEnableShareGradHolder(unittest.TestCase):
 class TestGetSetCudaRngState(unittest.TestCase):
     """Tests for _get_cuda_rng_state and _set_cuda_rng_state."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_get_cuda_rng_state(self):
         """Test _get_cuda_rng_state returns a tensor."""
         from paddlefleet.tensor_parallel.random import _get_cuda_rng_state
@@ -191,7 +189,6 @@ class TestGetSetCudaRngState(unittest.TestCase):
         state = _get_cuda_rng_state()
         self.assertIsNotNone(state)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_get_cuda_rng_state_graph_safe_asserts(self):
         """Test _get_cuda_rng_state raises assertion for graph_safe=True."""
         from paddlefleet.tensor_parallel.random import _get_cuda_rng_state
@@ -199,7 +196,6 @@ class TestGetSetCudaRngState(unittest.TestCase):
         with self.assertRaises(AssertionError):
             _get_cuda_rng_state(graph_safe=True)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_set_cuda_rng_state_graph_safe_asserts(self):
         """Test _set_cuda_rng_state raises assertion for graph_safe=True."""
         from paddlefleet.tensor_parallel.random import _set_cuda_rng_state

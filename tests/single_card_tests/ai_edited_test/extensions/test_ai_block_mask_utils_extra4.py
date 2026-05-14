@@ -66,7 +66,6 @@ class TestPrepareMaxmin(unittest.TestCase):
         except ImportError:
             self.skipTest("paddlefleet_ops not installed")
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_prepare_maxmin_output_shapes(self):
         """Test prepare_maxmin returns correct output shapes."""
         try:
@@ -83,7 +82,6 @@ class TestPrepareMaxmin(unittest.TestCase):
         except ImportError:
             self.skipTest("paddlefleet_ops not installed")
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_prepare_maxmin_small_input(self):
         """Test prepare_maxmin with small input."""
         try:

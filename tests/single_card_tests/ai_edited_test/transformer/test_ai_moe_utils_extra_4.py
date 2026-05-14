@@ -182,7 +182,6 @@ class TestLogMoeLosses(unittest.TestCase):
 class TestFakeClone(unittest.TestCase):
     """Tests for FakeClone PyLayer."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_fake_clone_preserves_values(self):
         """FakeClone should produce output with same values as input."""
         paddle.disable_static()

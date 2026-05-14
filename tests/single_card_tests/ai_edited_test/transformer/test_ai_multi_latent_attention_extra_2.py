@@ -36,7 +36,6 @@ from paddlefleet.transformer.multi_latent_attention import (
 class TestEcCompatibleRopeApply(unittest.TestCase):
     """Tests for _ec_compatible_rope_apply."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_output_shapes_match_input(self):
         """Output shapes should match input shapes for q_pe and k_pe."""
         paddle.disable_static()
@@ -47,7 +46,6 @@ class TestEcCompatibleRopeApply(unittest.TestCase):
         self.assertEqual(q_out.shape, q_pe.shape)
         self.assertEqual(k_out.shape, k_pe.shape)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_output_dtype_matches_input(self):
         """Output dtype should match input dtype."""
         B, S, H, D = 1, 4, 2, 16
@@ -89,7 +87,6 @@ class TestMLASelfAttentionSublayersSpecDefaults(unittest.TestCase):
 class TestFP8OverlapProj(unittest.TestCase):
     """Tests for FP8OverlapProj."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_output_shape(self):
         """FP8OverlapProj.forward should produce output matching F.linear."""
         from paddlefleet.transformer.multi_latent_attention import (
@@ -102,7 +99,6 @@ class TestFP8OverlapProj(unittest.TestCase):
         result = FP8OverlapProj.apply(x, weight)
         self.assertEqual(result.shape, [2, 4, 16])
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_output_matches_linear(self):
         """FP8OverlapProj.forward should match paddle.nn.functional.linear."""
         from paddlefleet.transformer.multi_latent_attention import (

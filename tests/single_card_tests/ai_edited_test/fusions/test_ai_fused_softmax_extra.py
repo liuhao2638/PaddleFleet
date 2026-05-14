@@ -38,7 +38,6 @@ except:
     pass
 
 
-@unittest.skipIf(not _CUDA_SOFTMAX, "SoftmaxOne requires GPU for sink token")
 class TestSoftmaxOne(unittest.TestCase):
     """Tests for SoftmaxOne layer."""
 
@@ -54,7 +53,6 @@ class TestFusedScaleMaskSoftmaxExtra(unittest.TestCase):
         paddle.seed(42)
         self.x = paddle.randn([2, 4, 8, 16], dtype=paddle.float32)
 
-    @unittest.skipIf(
         not paddle.is_compiled_with_cuda(), "CUDA required for float16"
     )
     def test_fp16_input_fp32_softmax(self):
@@ -75,7 +73,6 @@ class TestFusedScaleMaskSoftmaxExtra(unittest.TestCase):
         self.assertEqual(out.shape, [2, 4, 8, 16])
         self.assertEqual(out.dtype, paddle.float16)
 
-    @unittest.skipIf(
         not paddle.is_compiled_with_cuda(), "CUDA required for bfloat16"
     )
     def test_bf16_input_fp32_softmax(self):

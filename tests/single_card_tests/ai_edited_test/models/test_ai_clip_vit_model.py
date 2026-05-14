@@ -458,7 +458,6 @@ class TestCLIPViTModelSetInputTensor(unittest.TestCase):
 class TestCLIPViTModelForward(unittest.TestCase):
     """Test CLIPViTModel forward pass with mocked internals."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_clip_with_class_token(self):
         """Test forward pass with CLIP model subtype."""
         from paddlefleet.models.gpt.gpt_layer_specs import (

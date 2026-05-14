@@ -56,7 +56,6 @@ def _make_config(**overrides):
 class TestBMMFunctionDetailed(unittest.TestCase):
     """Detailed tests for BMMFunction."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_multiple_batch_sizes(self):
         """Test BMMFunction with 2D lhs as required by batched_gemm."""
         # batched_gemm expects lhs to be 2D [total_seq_len, input_hidden_size]
@@ -67,7 +66,6 @@ class TestBMMFunctionDetailed(unittest.TestCase):
         out = BMMFunction.apply(x, y, batch_sizes, trans_y=False)
         self.assertEqual(list(out.shape), [8, 32])
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_preserves_dtype(self):
         """Test BMMFunction preserves float32 dtype."""
         x = paddle.randn([4, 64], dtype="float32")

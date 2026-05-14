@@ -66,7 +66,6 @@ class TestFindBlocksTopp(unittest.TestCase):
         except ImportError:
             self.skipTest("paddlefleet_ops not installed")
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_find_blocks_topp_output_type(self):
         """Test find_blocks_topp returns a tensor."""
         try:
@@ -80,7 +79,6 @@ class TestFindBlocksTopp(unittest.TestCase):
         except ImportError:
             self.skipTest("paddlefleet_ops not installed")
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_find_blocks_topp_output_shape(self):
         """Test find_blocks_topp preserves input shape."""
         try:
@@ -94,7 +92,6 @@ class TestFindBlocksTopp(unittest.TestCase):
         except ImportError:
             self.skipTest("paddlefleet_ops not installed")
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_find_blocks_topp_low_threshold(self):
         """Test find_blocks_topp with very low threshold includes most elements."""
         try:

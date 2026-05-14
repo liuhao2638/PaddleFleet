@@ -55,7 +55,6 @@ def _make_rmsnorm_config(**overrides):
     return TransformerConfig(**defaults)
 
 
-@unittest.skipIf(not HAVE_FUSED_RMS_NORM, "fused_rms_norm not available")
 class TestFusedRmsNorm(unittest.TestCase):
     """Tests for FusedRmsNorm."""
 
@@ -98,7 +97,6 @@ class TestFusedRmsNorm(unittest.TestCase):
         np.testing.assert_allclose(layer.weight.numpy(), 1.0, atol=1e-6)
         np.testing.assert_allclose(layer.bias.numpy(), 0.0, atol=1e-6)
 
-    @unittest.skipIf(
         not paddle.is_compiled_with_cuda(),
         "fused_rms_norm forward requires CUDA (uses bfloat16)",
     )

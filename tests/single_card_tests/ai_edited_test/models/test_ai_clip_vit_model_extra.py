@@ -228,7 +228,6 @@ class TestCLIPViTModelInitVariants(unittest.TestCase):
             )
 
 
-@unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
 class TestCLIPViTModelForwardCUDA(unittest.TestCase):
     """Test CLIPViTModel forward on CUDA - model construction tests."""
 

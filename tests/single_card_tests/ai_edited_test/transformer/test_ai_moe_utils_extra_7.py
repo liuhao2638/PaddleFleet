@@ -76,7 +76,6 @@ class TestAllToAllSingleProcess(unittest.TestCase):
 class TestFakeCloneContiguous(unittest.TestCase):
     """Tests for FakeClone with contiguous tensors."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_fake_clone_contiguous_input(self):
         """FakeClone should share data for contiguous tensors."""
         paddle.disable_static()

@@ -75,7 +75,6 @@ except (ImportError, ModuleNotFoundError):
 # The triton mock above should make those importable too.
 
 
-@unittest.skipIf(not _SKIP_RR, "rr_attn_estimate_triton_func not compiled")
 @unittest.skipUnless(_MODULE_AVAILABLE, "paddlefleet_ops module not available")
 class TestRequire(unittest.TestCase):
     """Tests for _require helper."""

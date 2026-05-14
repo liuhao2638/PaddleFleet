@@ -88,21 +88,18 @@ class TestCudaRNGStatesTrackerGetSetStates(unittest.TestCase):
 class TestCudaRNGStatesTrackerAdd(unittest.TestCase):
     """Tests for CudaRNGStatesTracker.add."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_add_sets_initialized(self):
         """add should mark tracker as initialized."""
         tracker = CudaRNGStatesTracker()
         tracker.add("test_state", 42)
         self.assertTrue(tracker.is_initialized())
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_add_tracks_seed(self):
         """add should track the seed."""
         tracker = CudaRNGStatesTracker()
         tracker.add("test_state", 42)
         self.assertIn(42, tracker.seeds_)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_add_rejects_duplicate_seed(self):
         """add should reject duplicate seeds."""
         tracker = CudaRNGStatesTracker()
@@ -110,7 +107,6 @@ class TestCudaRNGStatesTrackerAdd(unittest.TestCase):
         with self.assertRaises(ValueError):
             tracker.add("state2", 42)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_add_rejects_duplicate_name(self):
         """add should reject duplicate state names."""
         tracker = CudaRNGStatesTracker()

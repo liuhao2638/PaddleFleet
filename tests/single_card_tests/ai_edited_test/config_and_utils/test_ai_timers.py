@@ -325,7 +325,6 @@ class TestTimers(unittest.TestCase):
         else:
             self.assertIsInstance(timer, _Timer)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_timers_call_with_use_event_cuda(self):
         """Test Timers call with use_event=True on CUDA device."""
         from paddlefleet.timers import Timers

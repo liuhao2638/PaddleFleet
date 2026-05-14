@@ -260,7 +260,6 @@ class TestWeightedBiasQuickGeGLUExtra(unittest.TestCase):
 _SKIP_GEGLU_AUTOGRAD = not paddle.is_compiled_with_cuda()
 
 
-@unittest.skipIf(
     _SKIP_GEGLU_AUTOGRAD, "WeightedQuickGeGLU autograd tests require CUDA"
 )
 class TestWeightedQuickGeGLUFunctionAutograd(unittest.TestCase):

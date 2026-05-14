@@ -413,8 +413,6 @@ class TestRADIOViTModelApplyPosEnc(unittest.TestCase):
 class TestRADIOViTModelForward(unittest.TestCase):
     """Test RADIOViTModel forward pass."""
 
-    @unittest.skipIf(not HAVE_EINOPS, "einops not available")
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_basic(self):
         """Test forward pass with small input."""
         from paddlefleet.models.gpt.gpt_layer_specs import (

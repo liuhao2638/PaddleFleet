@@ -73,7 +73,6 @@ class TestRADIOViTModelGetPosEncEval(unittest.TestCase):
         result = model.get_pos_enc(batch_size=2)
         self.assertIsNotNone(result)
 
-    @unittest.skipIf(
         not paddle.is_compiled_with_cuda(), "Requires CUDA for interpolation"
     )
     @patch(
@@ -125,7 +124,6 @@ class TestRADIOViTModelGetPosEncEval(unittest.TestCase):
 class TestRADIOViTModelApplyPosEncTrain(unittest.TestCase):
     """Test RADIOViTModel.apply_pos_enc in training mode."""
 
-    @unittest.skipIf(
         not paddle.is_compiled_with_cuda(), "Requires CUDA for interpolation"
     )
     @patch(
@@ -188,7 +186,6 @@ class TestRADIOViTModelApplyPosEncTrain(unittest.TestCase):
 class TestRADIOViTModelGetPosEncTrain(unittest.TestCase):
     """Test RADIOViTModel.get_pos_enc in training mode."""
 
-    @unittest.skipIf(
         not paddle.is_compiled_with_cuda(), "Requires CUDA for interpolation"
     )
     @patch(
@@ -223,8 +220,6 @@ class TestRADIOViTModelGetPosEncTrain(unittest.TestCase):
             pass
 
 
-@unittest.skipIf(not HAVE_EINOPS, "einops not available")
-@unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
 class TestRADIOViTModelForwardCUDA(unittest.TestCase):
     """Test RADIOViTModel forward on CUDA."""
 

@@ -178,7 +178,6 @@ class TestGetPadding(unittest.TestCase):
 class TestGetPackedSeqParams(unittest.TestCase):
     """Test get_packed_seq_params function."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_basic(self):
         """Test basic packed seq params creation."""
         tokens = paddle.randint(0, 100, [2, 10]).cuda()
@@ -192,7 +191,6 @@ class TestGetPackedSeqParams(unittest.TestCase):
         self.assertIsNotNone(packed_params)
         self.assertEqual(packed_params.qkv_format, "sbhd")
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_with_cp_padding(self):
         """Test with CP > 1 and padding."""
         tokens = paddle.randint(0, 100, [2, 10]).cuda()
@@ -208,7 +206,6 @@ class TestGetPackedSeqParams(unittest.TestCase):
         self.assertEqual(packed_params.qkv_format, "thd")
         self.assertIsNotNone(packed_params.cu_seqlens_q_padded)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_with_packed_sequence(self):
         """Test with use_packed_sequence=True."""
         tokens = paddle.randint(0, 100, [2, 10]).cuda()
@@ -224,7 +221,6 @@ class TestGetPackedSeqParams(unittest.TestCase):
         self.assertEqual(packed_params.qkv_format, "thd")
         self.assertIsNotNone(packed_params.cu_seqlens_q_padded)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_cu_seqlens_shape(self):
         """Test cu_seqlens shape."""
         batch_size = 3

@@ -43,7 +43,6 @@ class TestGetCudaRngState(unittest.TestCase):
         with self.assertRaises(AssertionError):
             _get_cuda_rng_state(graph_safe=True)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_returns_rng_state(self):
         """Should return a GeneratorState when called with default args."""
         result = _get_cuda_rng_state()

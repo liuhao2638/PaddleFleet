@@ -180,7 +180,6 @@ class TestInferenceRngTracker(unittest.TestCase):
 class TestForkRng(unittest.TestCase):
     """Tests for _fork_rng context manager."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_fork_rng_restores_state(self):
         """Test that _fork_rng restores RNG state after exit."""
         from paddlefleet.tensor_parallel.random import (

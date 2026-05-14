@@ -32,7 +32,6 @@ import paddle
 class TestScheduleNodeForward(unittest.TestCase):
     """Tests for ScheduleNode.forward in pipeline_parallel/utils.py."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_with_cuda(self):
         from paddlefleet.pipeline_parallel.utils import ScheduleNode
 
@@ -180,7 +179,6 @@ class TestScheduleNodeGetGrad(unittest.TestCase):
 class TestScheduleNodeBackward(unittest.TestCase):
     """Tests for ScheduleNode.backward in pipeline_parallel/utils.py."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_backward_with_cuda(self):
         from paddlefleet.pipeline_parallel.utils import ScheduleNode
 

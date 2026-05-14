@@ -64,7 +64,6 @@ def _make_layernorm_config(**overrides):
     return config
 
 
-@unittest.skipIf(not HAVE_FUSED_LAYER_NORM, "fused_layer_norm not available")
 class TestFusedLayerNorm(unittest.TestCase):
     """Tests for FusedLayerNorm."""
 
@@ -193,7 +192,6 @@ class TestFusedLayerNormErrors(unittest.TestCase):
 
             FusedLayerNorm(config, hidden_size=64)
 
-    @unittest.skipIf(
         not HAVE_FUSED_LAYER_NORM, "fused_layer_norm not available"
     )
     def test_value_error_no_fused_ln(self):

@@ -66,7 +66,6 @@ def _make_config(**overrides):
 class TestGroupedMLPExpertConstruction(unittest.TestCase):
     """Tests for GroupedMLPExpert __init__."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_construction_basic(self):
         """Test basic construction of GroupedMLPExpert."""
         config = _make_config()
@@ -78,7 +77,6 @@ class TestGroupedMLPExpertConstruction(unittest.TestCase):
         self.assertEqual(expert.num_local_experts, 2)
         self.assertFalse(expert.moe_deep_gemm)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_construction_with_sonic_moe(self):
         """Test construction with sonic_moe enabled."""
         config = _make_config(using_sonic_moe=True)
@@ -121,7 +119,6 @@ class TestGroupedMLPExpertConstruction(unittest.TestCase):
 class TestGroupedMLPExpertForward(unittest.TestCase):
     """Tests for GroupedMLPExpert forward."""
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_with_tokens(self):
         """Test forward with tokens allocated to experts."""
         config = _make_config()
@@ -137,7 +134,6 @@ class TestGroupedMLPExpertForward(unittest.TestCase):
         self.assertEqual(output.shape[0], 4)
         self.assertIsNone(bias)
 
-    @unittest.skipIf(not paddle.is_compiled_with_cuda(), "Requires CUDA")
     def test_forward_with_zero_tokens(self):
         """Test forward with zero tokens allocated to experts."""
         config = _make_config()
